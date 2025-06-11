@@ -26,9 +26,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
             const Text(
               'App Settings',
               style: TextStyle(
@@ -106,7 +107,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const SizedBox(height: 12),
             
             ElevatedButton.icon(
-              onPressed: () => context.goNamed(
+              onPressed: () => context.pushNamed(
                 'details',
                 pathParameters: {'id': 'settings'},
                 queryParameters: {'title': 'Settings Details'},
@@ -149,6 +150,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
             ),
           ],
+        ),
         ),
       ),
     );

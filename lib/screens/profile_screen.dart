@@ -12,14 +12,15 @@ class ProfileScreen extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () => context.go('/'), // Navigate back to home
+          onPressed: () => context.pop(),
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
             const Card(
               elevation: 4,
               child: Padding(
@@ -74,7 +75,7 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 12),
             
             ElevatedButton.icon(
-              onPressed: () => context.goNamed(
+              onPressed: () => context.pushNamed(
                 'details',
                 pathParameters: {'id': 'profile'},
                 queryParameters: {'title': 'Profile Details'},
@@ -117,6 +118,7 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
           ],
+        ),
         ),
       ),
     );

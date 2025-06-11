@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
             
             // Navigate with parameters
             ElevatedButton.icon(
-              onPressed: () => context.go('/details/123?title=Sample Item'),
+              onPressed: () => context.push('/details/123?title=Sample Item'),
               icon: const Icon(Icons.info),
               label: const Text('Details with Parameters'),
             ),
@@ -62,10 +62,10 @@ class HomeScreen extends StatelessWidget {
             
             // Navigate using named route
             ElevatedButton.icon(
-              onPressed: () => context.goNamed(
+              onPressed: () => context.pushNamed(
                 'details',
-                pathParameters: {'id': '456'},
-                queryParameters: {'title': 'Named Route Example'},
+                pathParameters: {'id': '12345'},
+                queryParameters: {'title': 'Fauzan putra sanjaya'},
               ),
               icon: const Icon(Icons.route),
               label: const Text('Details with Named Route'),
@@ -88,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(height: 8),
                     Text('• context.go() - Replaces current route'),
                     Text('• context.push() - Adds route to stack'),
-                    Text('• context.goNamed() - Navigate with name'),
+                    Text('• context.pushNamed() - Push with name'),
                     Text('• context.pop() - Go back'),
                   ],
                 ),
