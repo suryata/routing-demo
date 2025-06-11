@@ -70,6 +70,18 @@ class HomeScreen extends StatelessWidget {
               icon: const Icon(Icons.route),
               label: const Text('Details with Named Route'),
             ),
+            const SizedBox(height: 12),
+            
+            // Deep Link Demo
+            ElevatedButton.icon(
+              onPressed: () => context.push('/deep-link-demo'),
+              icon: const Icon(Icons.link),
+              label: const Text('Deep Link Tutorial'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.purple,
+                foregroundColor: Colors.white,
+              ),
+            ),
             const SizedBox(height: 32),
             
             const Card(

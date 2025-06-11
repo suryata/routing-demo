@@ -4,6 +4,7 @@ import '../screens/home_screen.dart';
 import '../screens/profile_screen.dart';
 import '../screens/settings_screen.dart';
 import '../screens/details_screen.dart';
+import '../screens/deep_link_demo_screen.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
@@ -28,6 +29,13 @@ class AppRouter {
         path: '/settings',
         name: 'settings',
         builder: (context, state) => const SettingsScreen(),
+      ),
+      
+      // Deep Link Demo Route
+      GoRoute(
+        path: '/deep-link-demo',
+        name: 'deepLinkDemo',
+        builder: (context, state) => const DeepLinkDemoScreen(),
       ),
       
       // Details Route with Parameter

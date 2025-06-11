@@ -248,10 +248,27 @@ AppBar(
 6. **Use Shell routes** for persistent layouts
 7. **Handle deep links** gracefully with error builders
 
+## Deep Linking 🔗
+
+```dart
+// Get current route URI
+final currentUri = GoRouterState.of(context).uri;
+
+// Share current route
+Clipboard.setData(ClipboardData(text: currentUri.toString()));
+
+// Handle custom URL schemes
+routing_demo://details/123?title=Product&category=electronics
+
+// Extract all query parameters
+final allParams = state.uri.queryParameters;
+```
+
 ## Common Gotchas ⚠️
 
 - Path parameters are always `String?`
 - Query parameters can be `null`
 - Use `context.go()` carefully - it replaces navigation stack
 - Routes are matched in order - put specific routes first
-- Remember to handle back button on root routes 
+- Remember to handle back button on root routes
+- Test deep links thoroughly on different platforms 

@@ -117,6 +117,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             const SizedBox(height: 12),
             
+            ElevatedButton.icon(
+              onPressed: () => context.push('/deep-link-demo'),
+              icon: const Icon(Icons.link),
+              label: const Text('Deep Link Tutorial'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.purple,
+                foregroundColor: Colors.white,
+              ),
+            ),
+            const SizedBox(height: 12),
+            
             OutlinedButton.icon(
               onPressed: () => context.go('/'),
               icon: const Icon(Icons.home),

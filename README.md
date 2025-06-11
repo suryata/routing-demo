@@ -19,6 +19,12 @@ Aplikasi demo sederhana untuk belajar menggunakan package `go_router` di Flutter
 - Custom error page untuk route yang tidak ditemukan
 - Redirect otomatis ke home page
 
+### 4. **Deep Linking**
+- Simulasi notifikasi dengan deep link
+- URL sharing dan custom scheme handling
+- Parameter passing melalui deep links
+- Real-time deep link testing
+
 ## 📁 Struktur Project (Clean Architecture)
 
 ```
@@ -27,10 +33,11 @@ lib/
 ├── router/
 │   └── app_router.dart      # Konfigurasi routing
 └── screens/
-    ├── home_screen.dart     # Halaman utama
-    ├── profile_screen.dart  # Halaman profile
-    ├── settings_screen.dart # Halaman settings
-    └── details_screen.dart  # Halaman detail dengan parameter
+    ├── home_screen.dart          # Halaman utama
+    ├── profile_screen.dart       # Halaman profile
+    ├── settings_screen.dart      # Halaman settings
+    ├── details_screen.dart       # Halaman detail dengan parameter
+    └── deep_link_demo_screen.dart # Tutorial deep linking
 ```
 
 ## 🛠️ Setup & Installation
@@ -134,6 +141,44 @@ GoRoute(
   },
 ),
 ```
+
+## 🔗 Deep Linking Tutorial
+
+### Apa itu Deep Linking?
+Deep linking memungkinkan pengguna untuk membuka halaman spesifik dalam aplikasi melalui URL, notifikasi, atau link eksternal.
+
+### Contoh Implementasi Deep Link:
+
+**1. Dari Notifikasi:**
+```dart
+// Simulasi notification payload
+{
+  "type": "message",
+  "deep_link": "/details/msg123?title=New Message&sender=John"
+}
+
+// Handle di aplikasi
+context.push('/details/msg123?title=New Message&sender=John');
+```
+
+**2. URL Sharing:**
+```dart
+// Copy current route untuk sharing
+final currentUri = GoRouterState.of(context).uri;
+Clipboard.setData(ClipboardData(text: currentUri.toString()));
+```
+
+**3. Custom URL Schemes:**
+```
+routing_demo://details/123?title=Product&category=electronics
+```
+
+### Testing Deep Links:
+Aplikasi ini dilengkapi dengan **Deep Link Demo** yang memungkinkan Anda:
+- 🔔 Simulasi notifikasi dengan deep link
+- 🧪 Test custom URL navigation  
+- 📊 Lihat parameter yang diterima
+- 📋 Copy dan share current route
 
 ## 💡 Tips & Best Practices
 

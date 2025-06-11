@@ -94,6 +94,61 @@ class DetailsScreen extends StatelessWidget {
                         ),
                       ],
                     ),
+                    
+                    // Show additional query parameters if any
+                    Builder(
+                      builder: (context) {
+                        final allQueryParams = GoRouterState.of(context).uri.queryParameters;
+                        final additionalParams = Map<String, String>.from(allQueryParams);
+                        additionalParams.remove('title'); // Remove already shown params
+                        
+                        if (additionalParams.isEmpty) {
+                          return const SizedBox.shrink();
+                        }
+                        
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(height: 16),
+                            const Divider(),
+                            const SizedBox(height: 8),
+                            const Text(
+                              'Additional Parameters:',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            for (final entry in additionalParams.entries) Padding(
+                              padding: const EdgeInsets.only(bottom: 4),
+                              child: Row(
+                                children: [
+                                  Icon(Icons.info_outline, size: 16, color: Colors.orange),
+                                  SizedBox(width: 8),
+                                  Text(
+                                    '${entry.key}: ',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      entry.value,
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.orange,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
